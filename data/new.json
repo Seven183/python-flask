@@ -1,0 +1,169 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 1
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "oraclereader",
+          "parameter": {
+            "username": "CODEX_USER",
+            "password": "g1t12021#",
+            "connection": [
+              {
+                "jdbcUrl": [
+                  "jdbc:oracle:thin:@10.208.10.33:1521:SGSBU"
+                ],
+                "querySql": [
+                  "select request_id,output_type,output_string1,output_string2,output_string3,last_update_date,last_updated_by,creation_date,created_by,porg_date,sales_mode,inquiry_no,inquiry_name,quote_no,gtt_no,fac_no,price_list,order_type,ship_from_org,sales_org,ship_to_continent,ship_to_country,child_continent,child_country,sales_person,pfi_no,inquiry_type,status,gtt_so_status,usa_number,customer_po,customer_number,customer_name,child_customer_number,child_customer_name,sales_channel,loading_advice#,la_status,etd_factory,year,month,week,old_etd,crd_date,oe_ok,item_number,item_description,item_class,item_series,item_brand,loading_standard,end_customer_currency,fac_list_price,fac_selling_price,price,end_customer_price,selling_price,amount,high_cube,total_hc,uom,ordered_quantity,advised_quantity,unadvised_quantity,fac_shipped_qty,gtt_shipped_qty,load_date,vessel_date,loading_quantity_ontime,cancelled_quantity,fac_unshipped_quantity,gtt_unshipped_quantity,payment_status,port_of_loading,ship_to_location2,ship_to_location,actual_delivery_address,trade_term,packing_material,packing_color,order_create_date,order_placed_date,loading_week,payment_term,fac_payment_term,credit_available_date,credit_hold_status,line_etd,shipment_status,certification_required,certification_shipped,shipping_instructions,po#,po_qty,advised_this_week,advised_next_week,inquiry_reason,la_reason,special_requirement,eta,shipping_method,other_instuction,label_requirement,sales_region,la_create_date,la_approve_date,cancel_reason,remark,internal_item_description,fac_currency,record_date from BI.cux_export_data_temp_new where RECORD_DATE >= %s and RECORD_DATE < %s"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "writeMode": "insert",
+            "username": "gtech_test",
+            "password": "%s",
+            "column": [
+              "request_id",
+              "output_type",
+              "output_string1",
+              "output_string2",
+              "output_string3",
+              "last_update_date",
+              "last_updated_by",
+              "creation_date",
+              "created_by",
+              "porg_date",
+              "sales_mode",
+              "inquiry_no",
+              "inquiry_name",
+              "quote_no",
+              "gtt_no",
+              "fac_no",
+              "price_list",
+              "order_type",
+              "ship_from_org",
+              "sales_org",
+              "ship_to_continent",
+              "ship_to_country",
+              "child_continent",
+              "child_country",
+              "sales_person",
+              "pfi_no",
+              "inquiry_type",
+              "status",
+              "gtt_so_status",
+              "usa_number",
+              "customer_po",
+              "customer_number",
+              "customer_name",
+              "child_customer_number",
+              "child_customer_name",
+              "sales_channel",
+              "loading_advice",
+              "la_status",
+              "etd_factory",
+              "year",
+              "month",
+              "week",
+              "old_etd",
+              "crd_date",
+              "oe_ok",
+              "item_number",
+              "item_description",
+              "item_class",
+              "item_series",
+              "item_brand",
+              "loading_standard",
+              "end_customer_currency",
+              "fac_list_price",
+              "fac_selling_price",
+              "price",
+              "end_customer_price",
+              "selling_price",
+              "amount",
+              "high_cube",
+              "total_hc",
+              "uom",
+              "ordered_quantity",
+              "advised_quantity",
+              "unadvised_quantity",
+              "fac_shipped_qty",
+              "gtt_shipped_qty",
+              "load_date",
+              "vessel_date",
+              "loading_quantity_ontime",
+              "cancelled_quantity",
+              "fac_unshipped_quantity",
+              "gtt_unshipped_quantity",
+              "payment_status",
+              "port_of_loading",
+              "ship_to_location2",
+              "ship_to_location",
+              "actual_delivery_address",
+              "trade_term",
+              "packing_material",
+              "packing_color",
+              "order_create_date",
+              "order_placed_date",
+              "loading_week",
+              "payment_term",
+              "fac_payment_term",
+              "credit_available_date",
+              "credit_hold_status",
+              "line_etd",
+              "shipment_status",
+              "certification_required",
+              "certification_shipped",
+              "shipping_instructions",
+              "po",
+              "po_qty",
+              "advised_this_week",
+              "advised_next_week",
+              "inquiry_reason",
+              "la_reason",
+              "special_requirement",
+              "eta",
+              "shipping_method",
+              "other_instuction",
+              "label_requirement",
+              "sales_region",
+              "la_create_date",
+              "la_approve_date",
+              "cancel_reason",
+              "remark",
+              "internal_item_description",
+              "fac_currency",
+              "record_date"
+            ],
+            "session": [
+              "set session sql_mode='ANSI'"
+            ],
+            "preSql": [
+              "delete from cux_export_data_temp_new where RECORD_DATE >= %s and RECORD_DATE < %s "
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://rm-uf676dz9l1s10gdg590230.mysql.rds.aliyuncs.com:3306/test_control_tower",
+                "table": [
+                  "cux_export_data_temp_new"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

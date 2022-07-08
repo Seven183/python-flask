@@ -1,0 +1,52 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 1
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "%s",
+            "password": "%s",
+            "connection": [
+              {
+                "querySql": [
+                  "select ID,TENANT_CODE from t_order_order"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://rm-uf676dz9l1s10gdg590230.mysql.rds.aliyuncs.com:3306/test_order_db"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://172.19.0.166:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/codex_tmp.db/tmp_order_order",
+            "fileName": "tmp_order_order",
+            "column": [
+              {
+                "name": "ID",
+                "type": "BIGINT"
+              },
+              {
+                "name": "TENANT_CODE",
+                "type": "STRING"
+              }
+            ],
+            "writeMode": "truncate",
+            "fieldDelimiter": "\t",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

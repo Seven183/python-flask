@@ -1,0 +1,29 @@
+MYSQL:
+  USERNAME: 'root'
+  PASSWORD: '123456'
+  HOST: '42.192.48.125'
+  PORT: '3306'
+  DB: 'test'
+
+REDIS:
+  HOST: '42.192.48.125'
+  PORT: '6380'
+  DB: '1'
+  PASSWORD: 'Qm03121212'
+
+KAFKA:
+  GROUP_ID: 'flink_sink'
+  BOOTSTRAP_SERVERS: '42.192.48.125:9092'
+  TOPIC: 'flink_sink'
+
+MONGO:
+  USERNAME: 'mongo'
+  PASSWORD: '123456'
+  HOST: '42.192.48.125'
+  PORT: '27017'
+
+CLICKHOUSE:
+  HOST: '42.192.48.125'
+  PORT: '9000'
+  DB: 'default'
+  SEND_RECEIVE_TIMEOUT: 20
